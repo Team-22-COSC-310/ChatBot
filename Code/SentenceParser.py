@@ -2,6 +2,7 @@ def replace_by_dict(_str: str, replacement_map: dict[str: str]) -> str:
     """
     Parses through string and replaces parts of the original string based on the .
     :param _str: str
+    :param replacement_map: dict[str: str]
     :return: str
     """
     for key, item in replacement_map.items():
