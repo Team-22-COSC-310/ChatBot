@@ -1,6 +1,11 @@
+"""
+This class is responsible for normalizing strings for further analysis.
+"""
+
+
 def replace_by_dict(_str: str, replacement_map: dict[str: str]) -> str:
     """
-    Parses through string and replaces parts of the original string based on the .
+    Parses through string and replaces parts of the original string based on the replacement_map.
     :param _str: str
     :param replacement_map: dict[str: str]
     :return: str
@@ -13,16 +18,15 @@ def replace_by_dict(_str: str, replacement_map: dict[str: str]) -> str:
 
 def parse_string(_str: str) -> list[str]:
     """
-    Parses through string to clean up text and creates a bag of words.
+    Parses through string to clean, lower, and replace text.
     :param _str: str
     :return: list[str]
     """
     _str = _str.lower()
     _str = _str.strip()
     _str = replace_by_dict(_str, REPLACEMENT_MAP)
-    bofw: list[str] = _str.split()
 
-    return bofw
+    return _str
 
 
 REPLACEMENT_MAP: dict[str: str] = {
