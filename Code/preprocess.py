@@ -1,9 +1,9 @@
 """
-This class is responsible for normalizing strings for further analysis.
+This class is responsible for preprocessing and normalizing strings for further consistent analysis.
 """
 
 
-def replace_by_dict(_str: str, replacement_map: dict[str: str]) -> str:
+def replace(_str: str, replacement_map: dict[str: str]) -> str:
     """
     Parses through string and replaces parts of the original string based on the replacement_map.
     :param _str: str
@@ -16,7 +16,7 @@ def replace_by_dict(_str: str, replacement_map: dict[str: str]) -> str:
     return _str
 
 
-def parse_string(_str: str) -> list[str]:
+def parse_string(_str: str) -> str:
     """
     Parses through string to clean, lower, and replace text.
     :param _str: str
@@ -24,7 +24,7 @@ def parse_string(_str: str) -> list[str]:
     """
     _str = _str.lower()
     _str = _str.strip()
-    _str = replace_by_dict(_str, REPLACEMENT_MAP)
+    _str = replace(_str, REPLACEMENT_MAP)
 
     return _str
 
