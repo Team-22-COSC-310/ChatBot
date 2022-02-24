@@ -20,8 +20,9 @@ def parse_string(_str: str) -> list[str]:
     _str = _str.lower()
     _str = _str.strip()
     _str = replace_by_dict(_str, REPLACEMENT_MAP)
+    bofw: list[str] = _str.split()
 
-    return _str.split()
+    return bofw
 
 
 REPLACEMENT_MAP: dict[str: str] = {
