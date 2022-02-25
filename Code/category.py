@@ -73,6 +73,7 @@ product_satisfaction_keyterms: list[str] = [
 ]
 
 complaint_keyterms: list[str] = [
+    "not",
     "bad",
     "fail",
     "poor",
