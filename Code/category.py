@@ -4,7 +4,6 @@ import math
 This class is responsible for analysis a strings similarity with a category.
 """
 
-
 def tokenize(_str: str) -> dict[str: int]:
     """
     Creates dict with word count for each distinct word.
@@ -53,11 +52,21 @@ def find_category(_str: str, default_category: str = "general") -> str:
     return category
 
 product_satisfaction_keyterms: list[str] = [
+    "fun",
+    "love",
     "good",
     "great",
+    "happy",
+    "great",
     "super",
+    "worked",
+    "decent",
+    "amazing",
     "awesome",
+    "mediocre",
     "satisfied",
+    "satisfied", 
+    "satisfying",
     "the ... i purchased was great",
     "i love the ... that i got",
     "i really like the ... i bought",
@@ -65,10 +74,30 @@ product_satisfaction_keyterms: list[str] = [
 
 complaint_keyterms: list[str] = [
     "bad",
+    "fail",
     "poor",
+    "fails", 
+    "issue", 
+    "refund",
+    "boring",
+    "failed",
+    "issues",
+    "annoyed",
+    "problem",
     "awefull",
+    "annoying",
+    "confused",
+    "problems",
     "complain",
     "terrable",
+    "horrible",
+    "confusing",
+    "complaint",
+    "complaints",
+    "irritating",
+    "disappointed", 
+    "disappointing", 
+    "disappointment",
     "i would not buy ... agian",
     "i am regretful of the ... i purchased",
     "buying the ... was the worst decision i made",
@@ -76,9 +105,15 @@ complaint_keyterms: list[str] = [
 ]
 
 review_keyterms: list[str] = [
+    "stars",
+    "review", 
     "rating",
     "opinion",
+    "reviewed",
+    "feedback", 
     "recommend",
+    "suggestion",
+    "suggestions",
     "in my opinion the ...",
     "i would give the ... a",
     "my rating of the ... would be",
