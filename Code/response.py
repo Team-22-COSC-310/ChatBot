@@ -1,4 +1,4 @@
-from random import choice as rc
+import random
 
 """
 This class contains responses for the users messages and finding a response for the user.
@@ -12,7 +12,7 @@ def generate_response(response_type: str, subject: str) -> str:
     :param subject: str
     :return: str
     """
-    return rc(response_types.get(response_type)).format(subject=subject)
+    return random.choice(response_types.get(response_type)).format(subject=subject)
 
 
 product_satisfaction_responses: list[str] = [
