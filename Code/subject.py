@@ -10,16 +10,16 @@ def find_subject(_str: str, default_subject: str = "none") -> str:
     :param default_subject: str
     :return: str
     """
-    subject: str = default_subject
-    subject_occurrences: int = 0
+    main_subject: str = default_subject
+    max_occurrences: int = 0
     bag_of_words: list[str] = _str.split()
     for _subject in subjects:
         occurrences: int = bag_of_words.count(_subject)
-        if occurrences > subject_occurrences:
-            subject = _subject
-            subject_occurrences = occurrences
+        if occurrences > max_occurrences:
+            main_subject = _subject
+            max_occurrences = occurrences
     
-    return subject
+    return main_subject
 
 
 subjects: list[str] = [
@@ -45,4 +45,7 @@ subjects: list[str] = [
         "sneakers"
         "slippers",
         "flip flops",
+        "glasses",
+        "bag",
+        "watch",
 ]
