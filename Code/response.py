@@ -46,7 +46,6 @@ greeting_responses: list[str] = [
 general_responses: list[str] = [
         "Ok.",
         "Great.",
-        "Awesome.",
         "Is there anything else you would like to share?",
         "Can I still assist you? Is there anything else you need to tell me?",
 ]
