@@ -15,26 +15,8 @@ def generate_response(response_type: str, subject: str) -> str:
     return rc(response_types.get(response_type)).format(subject=subject)
 
 
-greeting_responses: list[str] = [
-        "Hello!, how can I assist you today?",
-        "Nice to meet you! What can I help you with?",
-        "Hi! I am here to assist you!",
-]
-
-general_responses: list[str] = [
-        "Ok.",
-        "Ok Thanks!",
-        "Great.",
-]
-
-closing_responses: list[str] = [
-        "Have a great day!",
-        "Thanks for sharing your thought with me.",
-        "Thank you for your time.",
-]
-
 product_satisfaction_responses: list[str] = [
-        "I so glad you're happy with your {subject}! Is there anything about your {subject} you enjoyed in particular?",
+        "I am so glad you're happy with your {subject}! Is there anything about your {subject} you enjoyed in particular?",
         "That is great! We take so much pride in our {subject}\'s. What about it did you enjoy the most?",
         "Awesome! I am so glad you enjoyed your {subject}. What was the best part about the {subject}?",
 ]
@@ -47,16 +29,37 @@ complaint_responses: list[str] = [
 ]
 
 review_responses: list[str] = [
-        "Thank you for your input. Your review will be noted. Is there anything else you wanted to talk about?",
-        "Thank you for sharing, I will note your review. Anything else?",
-        "I will note your review. Is there more you would like to talk about?",
+        "Thank you for your input about are {subject}\'s. Your review will be noted. Is there anything else you wanted to share?",
+        "Thank you for sharing, I will note your review on are {subject}\'s. Anything else I can help with?",
+        "I will note your review on are {subject}\'s. Is there more you would like to talk about?",
+]
+
+greeting_responses: list[str] = [
+        "How can I assist you today?",
+        "Nice to meet you! What can I help you with?",
+        "I am here for any input on are products you have!",
+]
+
+general_responses: list[str] = [
+        "Ok.",
+        "Ok than.",
+        "Great.",
+        "Awesome.",
+        "Can I still asist you?",
+        "Is there anything else you would like to share?",
+]
+
+closing_responses: list[str] = [
+        "Have a great day!",
+        "Thanks for sharing your thought with me.",
+        "Thank you for your time.",
 ]
 
 response_types: dict[int: list] = {
-        "greeting":             greeting_responses,
-        "general":              general_responses,
-        "closing":              closing_responses,
         "product satisfaction": product_satisfaction_responses,
         "complaint":            complaint_responses,
         "review":               review_responses,
+        "greeting":             greeting_responses,
+        "general":              general_responses,
+        "closing":              closing_responses,
 }

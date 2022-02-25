@@ -3,7 +3,7 @@ This class is responsible for analysis strings for certain key subjects
 """
 
 
-def find_subject(_str: str) -> str:
+def find_subject(_str: str, default: str = "none") -> str:
     """
     This method looks for the most common subject keyword.
     :param _str: str
@@ -17,7 +17,7 @@ def find_subject(_str: str) -> str:
         if occurrences > subject_occurrences:
             subject = _subject
             subject_occurrences = occurrences
-
+    
     return subject
 
 
@@ -28,14 +28,16 @@ subjects: list[str] = [
         "cardigan",
         "coat",
         "parka",
+        "suit",
+        "skirt",
+        "dress",
+        "shirt",
+        "t-shirt",
         "trousers",
         "pants",
         "jeans",
         "shorts",
         "bathing suit",
-        "suit",
-        "skirt",
-        "dress",
         "shoe",
         "shoes",
         "boots",

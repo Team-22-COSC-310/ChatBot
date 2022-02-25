@@ -9,6 +9,27 @@ ChatBot is able to discuss reviews, compliant, and product satisfaction.
 """
 
 
+def help() -> None:
+    """
+    prints commands to screen.
+    :return: None
+    """
+    print("""
+    Commands:
+        help - display commands
+        exit - exits program
+    """)
+
+
+def exit() -> None:
+    """
+    exits program by breaking main loop.
+    :return: None
+    """
+    global running
+    running = False
+
+
 def main() -> None:
     """
     This is the core method for the ChatBot. Generates response based 
@@ -16,16 +37,27 @@ def main() -> None:
     :return: None
     """
 
-    while True:
-        user_message: str = ps(input("You: "))
-        if user_message == "Quit":
-            break
-        
-        category: str = fc(user_message)
-        subject: str = fs(user_message)
-        response: str = gs(category, subject)
-        print("Agent: {response}".format(response=response))
+    print("Customer Service: Hello!")
 
+    while running is True:
+        user_message: str = ps(input("You: "))
+        if user_message in commands:
+            commands[user_message]()
+        
+        else:
+            category: str = fc(user_message)
+            subject: str = fs(user_message, "product")
+            response: str = gs(category, subject)
+            print("Customer Service: {response}".format(response=response))
+
+
+running: bool = True
+commands: dict[str: callable] = {
+    "help": help,
+    "exit": exit,
+}
 
 if __name__ == "__main__":
     main()
+
+quit()
