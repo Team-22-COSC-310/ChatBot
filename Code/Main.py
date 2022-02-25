@@ -9,19 +9,19 @@ ChatBot is able to discuss reviews, compliant, and product satisfaction.
 """
 
 
-def help() -> None:
+def display_commands() -> None:
     """
     prints commands to screen.
     :return: None
     """
     print("""
     Commands:
-        help - display commands
+        commands - display commands
         exit - exits program
     """)
 
 
-def exit() -> None:
+def stop_running() -> None:
     """
     exits program by breaking main loop.
     :return: None
@@ -53,11 +53,9 @@ def main() -> None:
 
 running: bool = True
 commands: dict[str: callable] = {
-    "help": help,
-    "exit": exit,
+    "help": display_commands,
+    "exit": stop_running,
 }
 
 if __name__ == "__main__":
     main()
-
-quit()

@@ -4,6 +4,7 @@ import math
 This class is responsible for analysis a strings similarity with a category.
 """
 
+
 def tokenize(_str: str) -> dict[str: int]:
     """
     Creates dict with word count for each distinct word.
@@ -14,11 +15,11 @@ def tokenize(_str: str) -> dict[str: int]:
     return {word: bag_of_words.count(word) for word in set(bag_of_words)}
 
 
-def cosine_similarity(tokens_1: str, tokens_2: str) -> float:
+def cosine_similarity(tokens_1: dict[str: int], tokens_2: dict[str: int]) -> float:
     """
     Computes cosine similarity between two strings.
-    :param _str1: str
-    :param _str2: str
+    :param tokens_1: dict[str: int]
+    :param tokens_2: dict[str: int]
     :return: float
     """
     keys: set[str] = set(tokens_1.keys()) & set(tokens_2.keys())
@@ -33,9 +34,10 @@ def cosine_similarity(tokens_1: str, tokens_2: str) -> float:
     cross_product: float = math.sqrt(length_1) * math.sqrt(length_2)
     return 0.0 if not cross_product else product / cross_product
 
+
 def find_category(_str: str, default_category: str = "general") -> str:
     """
-    Finds the most similar reconized category based on given string.
+    Finds the most similar recognized category based on given string.
     :param _str: str
     :param default_category: str
     :return: str
@@ -50,6 +52,7 @@ def find_category(_str: str, default_category: str = "general") -> str:
             max_category_score = category_score
     
     return category
+
 
 product_satisfaction_keyterms: list[str] = [
     "fun",

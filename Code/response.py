@@ -18,19 +18,23 @@ def generate_response(response_type: str, subject: str) -> str:
 product_satisfaction_responses: list[str] = [
         "Awesome! I am so glad you enjoyed your {subject}. What was the best part about the {subject}?",
         "That is great! We take so much pride in our {subject}\'s. What about it did you enjoy the most?",
-        "I am so glad you're happy with your {subject}! Is there anything about your {subject} you enjoyed in particular?",
+        "I am so glad you're happy with your {subject}! Is there anything about your {subject} you enjoyed in "
+        "particular?",
 ]
 
 complaint_responses: list[str] = [
         "I am sorry to hear about that. What in particular was wrong with the {subject}?",
         "I am sorry to hear that about your {subject}. Is there anything you can let us know to improve it?",
-        "Thank you for sharing your complaint about are {subject}. Is there anything we could do in the future to prevent this?",
+        "Thank you for sharing your complaint about are {subject}. Is there anything we could do in the future to "
+        "prevent this?",
 ]
 
 review_responses: list[str] = [
         "I will note your review on are {subject}\'s. Is there more you would like to talk about?",
-        "Thank you for sharing, I will note your review on are {subject}\'s. Is there anything else I can help you with?",
-        "Thank you for your input about are {subject}\'s. Your review will be noted. Is there anything else you wanted to share?",
+        "Thank you for sharing, I will note your review on are {subject}\'s. Is there anything else I can help you "
+        "with?",
+        "Thank you for your input about are {subject}\'s. Your review will be noted. Is there anything else you "
+        "wanted to share?",
 ]
 
 greeting_responses: list[str] = [
@@ -44,7 +48,7 @@ general_responses: list[str] = [
         "Great.",
         "Awesome.",
         "Is there anything else you would like to share?",
-        "Can I still asist you? Is there anything else you need to tell me?",
+        "Can I still assist you? Is there anything else you need to tell me?",
 ]
 
 closing_responses: list[str] = [
