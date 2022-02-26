@@ -7,13 +7,13 @@ This class is responsible for analysis a strings similarity with a category.
 """
 
 
-def tokenize(_str: str) -> dict[str: int]:
+def tokenize(document: str) -> dict[str: int]:
     """
     Creates dict with word count for each distinct word.
-    :param _str: str
+    :param document: str
     :return: dict[str: int]
     """
-    bag_of_words: list[str] = _str.split()
+    bag_of_words: list[str] = document.split()
     return {word: bag_of_words.count(word) for word in set(bag_of_words)}
 
 
@@ -48,30 +48,30 @@ def tfidf(term: str, token: dict[str: int], tokens: Sequence[dict[str: int]]) ->
     return term_frequency(term, token) * inverse_document_frequency(term, tokens)
 
 
-def cosine_similarity(tokens_1: dict[str: int], tokens_2: dict[str: int]) -> float:
+def cosine_similarity(token_1: dict[str: int], token_2: dict[str: int]) -> float:
     """
     Computes cosine similarity between two strings.
-    :param tokens_1: dict[str: int]
-    :param tokens_2: dict[str: int]
+    :param token_1: dict[str: int]
+    :param token_2: dict[str: int]
     :return: float
     """
-    keys: set[str] = set(tokens_1.keys()) & set(tokens_2.keys())
+    keys: set[str] = set(token_1.keys()) & set(token_2.keys())
     product: int = 0
     magnitude_1: float = 0.0
     magnitude_2: float = 0.0
     for key in keys:
-        product += tokens_1[key] * tokens_2[key]
-        magnitude_1 += math.pow(tokens_1[key], 2)
-        magnitude_2 += math.pow(tokens_2[key], 2)
+        product += token_1[key] * token_2[key]
+        magnitude_1 += math.pow(token_1[key], 2)
+        magnitude_2 += math.pow(token_2[key], 2)
 
     cross_product: float = math.sqrt(magnitude_1) * math.sqrt(magnitude_2)
     return 0.0 if not cross_product else product / cross_product
 
 
-def find_category(_str: str, default_category: str = "general") -> str:
+def find_category(document: str, default_category: str = "none") -> str:
     """
     Finds the most similar recognized category based on given string.
-    :param _str: str
+    :param document: str
     :param default_category: str
     :return: str
     """
@@ -79,14 +79,14 @@ def find_category(_str: str, default_category: str = "general") -> str:
     similarity: float = 0.0
     for _category, keyterms in categorical_types.items():
         # Gets TF-IDF between all keyterms in category with _str
-        tokens: list[dict[str: int]] = [tokenize(s) for s in [_str, *keyterms]]
+        tokens: list[dict[str: int]] = [tokenize(s) for s in [document, *keyterms]]
         for token in tokens:
             for term in token.keys():
                 token[term] = tfidf(term, token, tokens)
 
         # Gets similarity between _str and all keyterms in category
         user_token: dict[str: int] = tokens.pop(0)
-        _similarity: float = max(cosine_similarity(user_token, t) for t in tokens)
+        _similarity: float = sum(cosine_similarity(user_token, t) for t in tokens) / len(keyterms)
         if _similarity > similarity:
             category = _category
             similarity = _similarity
@@ -119,12 +119,13 @@ product_satisfaction_keyterms: list[str] = [
         "the ... i purchased was great",
         "i really like the ... i bought",
         "i bought some ... from a store of yours and they work great",
-        "i bought a shirt from your store and it is awesome!",
+        "i bought a ... from your store and it is awesome",
 ]
 
 complaint_keyterms: list[str] = [
         "bad",
-        "awefull",
+        "problem",
+        "awe full",
         "the ... was not good",
         "... is a bad ...",
         "it was a huge fail",
@@ -138,23 +139,24 @@ complaint_keyterms: list[str] = [
         "i have multiple issues",
         "i am very annoyed",
         "i have a problem with ...",
-        "the ... i bought was an awefull desicion",
+        "the ... i bought was an awe full decision",
         "this is very annoying",
-        "the ... was not stright forward when i bought it, and i found it very confusing",
+        "the ... was not straight forward when i bought it, and i found it very confusing",
         "the ... did not fit properly",
         "the ... had many problems",
         "i have a complaint",
         "the ... had a terrable design",
         "the ... was horrible",
         "i could not figure out the ... its was confusing",
-        "the ... disfunction was irritating",
-        "my disappointed was immersurable",
-        "my disappointing in the product was immersurable",
+        "the ... dysfunction was irritating",
+        "my disappointed was immeasurable",
+        "my disappointing in the product was immeasurable",
         "i was very disappointment in the ...",
-        "i would not buy ... agian",
+        "i would not buy ... again",
         "i am regretful of the ... i purchased",
         "buying the ... was the worst decision i made",
         "i would like to complain about the ... i bought",
+        "i am having problems with my ...",
 ]
 
 review_keyterms: list[str] = [

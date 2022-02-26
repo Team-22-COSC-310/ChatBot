@@ -5,14 +5,14 @@ This class contains responses for the users messages and finding a response for 
 """
 
 
-def generate_response(response_type: str, subject: str) -> str:
+def generate_response(category: str, subject: str) -> str:
     """
     Generates random response from users response type and subject.
-    :param response_type: str
+    :param category: str
     :param subject: str
     :return: str
     """
-    return random.choice(response_types.get(response_type)).format(subject=subject)
+    return random.choice(response_types[category]).format(subject=subject)
 
 
 product_satisfaction_responses: list[str] = [
@@ -44,8 +44,8 @@ greeting_responses: list[str] = [
 ]
 
 general_responses: list[str] = [
-        "Ok.",
-        "Great.",
+        "Ok",
+        "Great",
         "Is there anything else you would like to share?",
         "Can I still assist you? Is there anything else you need to tell me?",
 ]

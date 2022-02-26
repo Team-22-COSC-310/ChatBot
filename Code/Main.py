@@ -16,7 +16,7 @@ def display_commands() -> None:
     """
     print("""
     Commands:
-        commands - display commands
+        help - display commands
         exit - exits program
     """)
 
@@ -45,7 +45,7 @@ def main() -> None:
             commands[user_message]()
         
         else:
-            category: str = fc(user_message)
+            category: str = fc(user_message, "general")
             subject: str = fs(user_message, "product")
             response: str = gs(category, subject)
             print("Customer Service: {response}".format(response=response))
