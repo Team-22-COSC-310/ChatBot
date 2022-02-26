@@ -1,10 +1,10 @@
 import math
+from typing import Sequence
 from preprocess import parse_string as ps
 
 """
 This class is responsible for analysis a strings similarity with a category.
 """
-
 
 def tokenize(_str: str) -> dict[str: int]:
     """
@@ -14,6 +14,18 @@ def tokenize(_str: str) -> dict[str: int]:
     """
     bag_of_words: list[str] = _str.split()
     return {word: bag_of_words.count(word) for word in set(bag_of_words)}
+
+
+def term_frequency(term: str, token: str) -> float:
+    return token[term] / len(token.keys())
+
+
+def inverse_document_frequency(term: str, tokens: Sequence[dict]) -> float:
+    return math.log(len(tokens) / sum(token[term] for token in tokens if term in token))
+
+
+def tfidf(term: str, token: dict, tokens: Sequence[dict]) -> float:
+    return term_frequency(term, token) * inverse_document_frequency(term, tokens)
 
 
 def cosine_similarity(tokens_1: dict[str: int], tokens_2: dict[str: int]) -> float:
@@ -43,19 +55,29 @@ def find_category(_str: str, default_category: str = "general") -> str:
     :param default_category: str
     :return: str
     """
-    main_tokens: dict[str: int] = tokenize(_str)
-    main_category: str = default_category
-    max_category_score: float = 0.0
-    for key, item in categorical_types.items():
-        category_score: float = sum(cosine_similarity(main_tokens, categorical_tokens) for categorical_tokens in item)
-        if category_score > max_category_score:
-            main_category = key
-            max_category_score = category_score
+    category: str = "general"
+    category_similarity: float = 0.0
+    for _category, keyterms in categorical_types:
+        tokens: list[dict[str: int]] = [tokenize(s) for s in [_str, *keyterms]]
+        for token in tokens:
+            for term in token.keys():
+                token[term] = tfidf(term, token, tokens)
+        
+        user_token: dict[str: int] = tokens.pop(0)
+        similarity: float = sum(cosine_similarity(user_token, t) for t in tokens)
+        if similarity > category_similarity:
+            category = _category
+            category_similarity = similarity
     
-    return main_category
+    return category
 
 
 product_satisfaction_keyterms: list[str] = [
+    "great",
+    "super",
+    "awesome",
+    "i bought some ... and they rock",
+    "i bought some awesome ..."
     "the ... was super fun",
     "i love how the ... looks",
     "the ... was good",
@@ -70,11 +92,15 @@ product_satisfaction_keyterms: list[str] = [
     "i am satisfied with it",
     "it was super satisfying",
     "i love the ... that i got",
+    "I bought some awesome shoes from your store.",
     "the ... i purchased was great",
     "i really like the ... i bought",
+    "i bought some ... from a store of yours and they work great",
 ]
 
 complaint_keyterms: list[str] = [
+    "bad",
+    "awefull",
     "the ... was not good",
     "... is a bad ...",
     "it was a huge fail",
@@ -148,11 +174,11 @@ closing_keyterms: list[str] = [
     "thanks for listening",
 ]
 
-categorical_types: dict[str: list[dict]] = {
-    "product satisfaction": [tokenize(ps(term)) for term in product_satisfaction_keyterms],
-    "complaint": [tokenize(ps(term)) for term in complaint_keyterms],
-    "review": [tokenize(ps(term)) for term in review_keyterms],
-    "greeting": [tokenize(ps(term)) for term in greeting_keyterms],
-    "general": [tokenize(ps(term)) for term in general_keyterms],
-    "closing": [tokenize(ps(term)) for term in closing_keyterms],
+categorical_types: dict[list[str]] = {
+    "product satisfaction": [ps(term) for term in product_satisfaction_keyterms],
+    "complaint": [ps(term) for term in complaint_keyterms],
+    "review": [ps(term) for term in review_keyterms],
+    "greeting": [ps(term) for term in greeting_keyterms],
+    "general": [ps(term) for term in general_keyterms],
+    "closing": [ps(term) for term in closing_keyterms],
 }
