@@ -16,15 +16,34 @@ def tokenize(_str: str) -> dict[str: int]:
     return {word: bag_of_words.count(word) for word in set(bag_of_words)}
 
 
-def term_frequency(term: str, token: str) -> float:
+def term_frequency(term: str, token: dict[str: int]) -> float:
+    """
+    Finds term frequency from token.
+    :param term: str
+    :param token: dict[str: int]
+    :return: float
+    """
     return token[term] / len(token.keys())
 
 
-def inverse_document_frequency(term: str, tokens: Sequence[dict]) -> float:
+def inverse_document_frequency(term: str, tokens: Sequence[dict[str: int]]) -> float:
+    """
+    Finds term inverse frequency from tokens.
+    :param: term: str
+    :param tokens: Sequence[dict[str: int]]
+    :return: float
+    """
     return math.log(len(tokens) / sum(token[term] for token in tokens if term in token))
 
 
-def tfidf(term: str, token: dict, tokens: Sequence[dict]) -> float:
+def tfidf(term: str, token: dict[str: int], tokens: Sequence[dict[str: int]]) -> float:
+    """
+    Finds term frequency and inverse frequency.
+    :param term: str
+    :param token: dict[str: int]
+    :param tokens: Sequence[dict[str: int]]
+    :return: float
+    """
     return term_frequency(term, token) * inverse_document_frequency(term, tokens)
 
 
@@ -56,23 +75,26 @@ def find_category(_str: str, default_category: str = "general") -> str:
     :return: str
     """
     category: str = "general"
-    category_similarity: float = 0.0
-    for _category, keyterms in categorical_types:
+    similarity: float = 0.0
+    for _category, keyterms in categorical_types.items():
+        # Gets TF-IDF between all keyterms in category with _str
         tokens: list[dict[str: int]] = [tokenize(s) for s in [_str, *keyterms]]
         for token in tokens:
             for term in token.keys():
                 token[term] = tfidf(term, token, tokens)
         
+        # Gets similarity between _str and all keyterms in category
         user_token: dict[str: int] = tokens.pop(0)
-        similarity: float = sum(cosine_similarity(user_token, t) for t in tokens)
-        if similarity > category_similarity:
+        _similarity: float = max(cosine_similarity(user_token, t) for t in tokens)
+        if _similarity > similarity:
             category = _category
-            category_similarity = similarity
+            similarity = _similarity
     
     return category
 
 
 product_satisfaction_keyterms: list[str] = [
+    "love",
     "great",
     "super",
     "awesome",
@@ -96,6 +118,7 @@ product_satisfaction_keyterms: list[str] = [
     "the ... i purchased was great",
     "i really like the ... i bought",
     "i bought some ... from a store of yours and they work great",
+    "i bought a shirt from your store and it is awesome!",
 ]
 
 complaint_keyterms: list[str] = [
