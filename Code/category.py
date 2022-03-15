@@ -130,6 +130,7 @@ product_satisfaction_keyterms: list[str] = [
 ]
 
 complaint_keyterms: list[str] = [
+    "not",
     "bad",
     "problem",
     "awe full",
@@ -164,6 +165,7 @@ complaint_keyterms: list[str] = [
     "buying the ... was the worst decision i made",
     "i would like to complain about the ... i bought",
     "i am having problems with my ...",
+    "i bought a product from one of your stores and it was broken",
 ]
 
 review_keyterms: list[str] = [
@@ -176,6 +178,7 @@ review_keyterms: list[str] = [
     "recommend",
     "suggestion",
     "suggestions",
+    "you should use better",
     "in my opinion the ...",
     "i would give the ... a",
     "my rating of the ... would be",
@@ -207,7 +210,7 @@ closing_keyterms: list[str] = [
     "thanks for listening",
 ]
 
-categorical_types: dict[str : list[str]] = {
+categorical_types: dict[str: list[str]] = {
     "product satisfaction": [ps(term) for term in product_satisfaction_keyterms],
     "complaint": [ps(term) for term in complaint_keyterms],
     "review": [ps(term) for term in review_keyterms],

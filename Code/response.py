@@ -24,7 +24,7 @@ product_satisfaction_responses: list[str] = [
 
 complaint_responses: list[str] = [
     "I am sorry to hear about that. What in particular was wrong with the {subject}?",
-    "I am sorry to hear that about your {subject}. Is there anything you can let us know to improve it?",
+    "I am sorry to hear that about your {subject}. Is there anything you can let us to improve it?",
     "Thank you for sharing your complaint about are {subject}. Is there anything we could do in the future to "
     "prevent this?",
 ]

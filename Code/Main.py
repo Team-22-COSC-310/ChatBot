@@ -14,8 +14,8 @@ class ChatApplication:
 
     BG_COLOR: str = "#202531"
     FG_COLOR: str = "#CBCDD1"
-    FONT: str = "Helvetica 11"
-    FONT_BOLD: str = "helvetica 11 bold"
+    FONT: str = "Helvetica 14"
+    FONT_BOLD: str = "helvetica 12 bold"
 
     def __init__(self) -> None:
         """
@@ -90,9 +90,9 @@ class ChatApplication:
             font=self.FONT,
         )
         self.message_entry.place(
-            relwidth=0.80,
+            relwidth=0.82,
             relheight=0.065,
-            relx=0.02,
+            relx=0.01,
             rely=0.92,
         )
         self.message_entry.focus()
@@ -106,7 +106,7 @@ class ChatApplication:
         self.send_button_Frame.place(
             relwidth=0.15,
             relheight=0.065,
-            relx=0.83,
+            relx=0.84,
             rely=0.92,
         )
         self.send_button = Button(
