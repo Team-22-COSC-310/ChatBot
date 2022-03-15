@@ -1,5 +1,4 @@
 from tkinter import *
-from turtle import width
 from preprocess import parse_string as ps
 from category import find_category as fc
 from subject import find_subject as fs
