@@ -5,12 +5,28 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e14e57f3-54e6-43ca-810b-54c981825adf" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/Code/Unit Tests/test_category.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Code/Unit Tests/test_preprocess.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Code/Unit Tests/test_response.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Code/Unit Tests/test_subject.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Code/Main.py" beforeDir="false" afterPath="$PROJECT_DIR$/Code/Main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Code/category.py" beforeDir="false" afterPath="$PROJECT_DIR$/Code/category.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Code/preprocess.py" beforeDir="false" afterPath="$PROJECT_DIR$/Code/preprocess.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Code/response.py" beforeDir="false" afterPath="$PROJECT_DIR$/Code/response.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Code/subject.py" beforeDir="false" afterPath="$PROJECT_DIR$/Code/subject.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Python Script" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -31,8 +47,15 @@
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
-  <component name="RunManager">
-    <configuration name="Main" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\nolan\OneDrive\Documents\GitHub\ChatBot\Code" />
+      <recent name="C:\Users\nolan\OneDrive\Documents\GitHub\ChatBot\Unit Tests" />
+      <recent name="C:\Users\nolan\OneDrive\Documents\GitHub\ChatBot" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Python tests.Python tests for test_subject.TestSubject.test_find_subject">
+    <configuration name="subject" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="ChatBot" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -44,7 +67,7 @@
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Code/Main.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Code/subject.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -53,9 +76,69 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
+    <configuration name="Python tests for test_category.TestCategory" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
+      <module name="ChatBot" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Code/Unit Tests" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="_new_additionalArguments" value="&quot;&quot;" />
+      <option name="_new_target" value="&quot;test_category.TestCategory&quot;" />
+      <option name="_new_targetType" value="&quot;PYTHON&quot;" />
+      <method v="2" />
+    </configuration>
+    <configuration name="Python tests for test_subject.TestCategory.test_find_subject" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
+      <module name="ChatBot" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Code/Unit Tests" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="_new_additionalArguments" value="&quot;&quot;" />
+      <option name="_new_target" value="&quot;test_subject.TestCategory.test_find_subject&quot;" />
+      <option name="_new_targetType" value="&quot;PYTHON&quot;" />
+      <method v="2" />
+    </configuration>
+    <configuration name="Python tests for test_subject.TestSubject.test_find_subject" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
+      <module name="ChatBot" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Code/Unit Tests" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="_new_additionalArguments" value="&quot;&quot;" />
+      <option name="_new_target" value="&quot;test_subject.TestSubject.test_find_subject&quot;" />
+      <option name="_new_targetType" value="&quot;PYTHON&quot;" />
+      <method v="2" />
+    </configuration>
+    <configuration name="Python tests in test_subject.py" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
+      <module name="ChatBot" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Code/Unit Tests" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="_new_additionalArguments" value="&quot;&quot;" />
+      <option name="_new_target" value="&quot;$PROJECT_DIR$/Code/Unit Tests/test_subject.py&quot;" />
+      <option name="_new_targetType" value="&quot;PATH&quot;" />
+      <method v="2" />
+    </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.Main" />
+        <item itemvalue="Python tests.Python tests for test_subject.TestSubject.test_find_subject" />
+        <item itemvalue="Python.subject" />
+        <item itemvalue="Python tests.Python tests in test_subject.py" />
+        <item itemvalue="Python tests.Python tests for test_category.TestCategory" />
+        <item itemvalue="Python tests.Python tests for test_subject.TestCategory.test_find_subject" />
       </list>
     </recent_temporary>
   </component>

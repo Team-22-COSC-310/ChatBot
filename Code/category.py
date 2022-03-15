@@ -1,59 +1,65 @@
 import math
 from typing import Sequence
-from preprocess import parse_string as ps
+from Code.preprocess import parse_string as ps
 
 """
 This class is responsible for analysis a strings similarity with a category.
 """
 
 
-def tokenize(document: str) -> dict[str: int]:
+def tokenize(document: str) -> dict[str:int]:
     """
     Creates dict with word count for each distinct word
-    :param document: str
+    :param str document: a string of normalized words
     :return: dict[str: int]
     """
     bag_of_words: list[str] = document.split()
     return {word: bag_of_words.count(word) for word in set(bag_of_words)}
 
 
-def term_frequency(term: str, token: dict[str: int]) -> float:
+def term_frequency(term: str, token: dict[str:int]) -> float:
     """
     Finds term frequency from token
-    :param term: str
-    :param token: dict[str: int]
-    :return: float
+    :param str term: a normalized word
+    :param token: a tokenized document
+    :type token: dict[str: int]
+    :return float: the tf value
     """
     return token[term] / len(token.keys())
 
 
-def inverse_document_frequency(term: str, tokens: Sequence[dict[str: int]]) -> float:
+def inverse_document_frequency(term: str, tokens: Sequence[dict[str:int]]) -> float:
     """
     Finds term inverse frequency from tokens
-    :param term: str
-    :param tokens: Sequence[dict[str: int]]
-    :return: float
+    :param str term: a normalized word
+    :param tokens: tokenized documents
+    :type tokens: Sequence[dict[str: int]]
+    :return float: the idf value
     """
     return math.log(len(tokens) / sum(token[term] for token in tokens if term in token))
 
 
-def tfidf(term: str, token: dict[str: int], tokens: Sequence[dict[str: int]]) -> float:
+def tfidf(term: str, token: dict[str:int], tokens: Sequence[dict[str:int]]) -> float:
     """
     Finds term frequency and inverse frequency
-    :param term: str
-    :param token: dict[str: int]
-    :param tokens: Sequence[dict[str: int]]
-    :return: float
+    :param str term: a normalized word
+    :param token: a tokenized document
+    :type token: dict[str: int]
+    :param tokens: tokenized documents
+    :type tokens: Sequence[dict[str: int]]
+    :return float: the tfidf value
     """
     return term_frequency(term, token) * inverse_document_frequency(term, tokens)
 
 
-def cosine_similarity(token_1: dict[str: int], token_2: dict[str: int]) -> float:
+def cosine_similarity(token_1: dict[str:int], token_2: dict[str:int]) -> float:
     """
     Computes cosine similarity between two strings
-    :param token_1: dict[str: int]
-    :param token_2: dict[str: int]
-    :return: float
+    :param token_1: a tokenized document
+    :type token_1: dict[str: int]
+    :param token_2: a tokenized document
+    :type token_2: dict[str: int]
+    :return float: the cosine similarity of both tokens
     """
     keys: set[str] = set(token_1.keys()) & set(token_2.keys())
     product: int = 0
@@ -71,22 +77,24 @@ def cosine_similarity(token_1: dict[str: int], token_2: dict[str: int]) -> float
 def find_category(document: str, default_category: str = "unknown") -> str:
     """
     Finds the most similar recognized category based on given string
-    :param document: str
-    :param default_category: str
-    :return: str
+    :param str document: a string of normalized words
+    :param str default_category: a default category if no others are found
+    :return str: generated category
     """
     category: str = default_category
     similarity: float = 0.0
     for _category, keyterms in categorical_types.items():
         # Gets TF-IDF between all keyterms in category with _str
-        tokens: list[dict[str: int]] = [tokenize(s) for s in [document, *keyterms]]
+        tokens: list[dict[str:int]] = [tokenize(s) for s in [document, *keyterms]]
         for token in tokens:
             for term in token.keys():
                 token[term] = tfidf(term, token, tokens)
 
         # Gets similarity between _str and all keyterms in category
-        user_token: dict[str: int] = tokens.pop(0)
-        _similarity: float = sum(cosine_similarity(user_token, t) for t in tokens) / len(keyterms)
+        user_token: dict[str:int] = tokens.pop(0)
+        _similarity: float = sum(
+            cosine_similarity(user_token, t) for t in tokens
+        ) / len(keyterms)
         if _similarity > similarity:
             category = _category
             similarity = _similarity
@@ -100,8 +108,7 @@ product_satisfaction_keyterms: list[str] = [
     "super",
     "awesome",
     "i bought some ... and they rock",
-    "i bought some awesome ..."
-    "the ... was super fun",
+    "i bought some awesome ..." "the ... was super fun",
     "i love how the ... looks",
     "the ... was good",
     "i had a great experience",
@@ -200,11 +207,11 @@ closing_keyterms: list[str] = [
     "thanks for listening",
 ]
 
-categorical_types: dict[str: list[str]] = {
+categorical_types: dict[str : list[str]] = {
     "product satisfaction": [ps(term) for term in product_satisfaction_keyterms],
-    "complaint":            [ps(term) for term in complaint_keyterms],
-    "review":               [ps(term) for term in review_keyterms],
-    "greeting":             [ps(term) for term in greeting_keyterms],
-    "general":              [ps(term) for term in general_keyterms],
-    "closing":              [ps(term) for term in closing_keyterms],
+    "complaint": [ps(term) for term in complaint_keyterms],
+    "review": [ps(term) for term in review_keyterms],
+    "greeting": [ps(term) for term in greeting_keyterms],
+    "general": [ps(term) for term in general_keyterms],
+    "closing": [ps(term) for term in closing_keyterms],
 }
