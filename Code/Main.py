@@ -1,3 +1,5 @@
+from tkinter import *
+from turtle import width
 from preprocess import parse_string as ps
 from category import find_category as fc
 from subject import find_subject as fs
@@ -9,53 +11,149 @@ ChatBot is able to discuss reviews, compliant, and product satisfaction.
 """
 
 
-def display_commands() -> None:
-    """
-    prints commands to screen.
-    :return: None
-    """
-    print("""
-    Commands:
-        help - display commands
-        exit - exits program
-    """)
+class ChatApplication:
 
+    BG_COLOR: str = "#415575"
+    FG_COLOR: str = "#EAECEE"
+    FONT: str = "Helvetica 11"
+    FONT_BOLD: str = "helvetica 11 bold"
 
-def stop_running() -> None:
-    """
-    exits program by breaking main loop.
-    :return: None
-    """
-    global running
-    running = False
+    def __init__(self) -> None:
+        """
+        This is the core class for the ChatBot GUI. It is responsible for the GUI and returning a response to the user
+        :return: None
+        """
+        # create main window
+        self.root = Tk()
+        self.root.title("Costomer Service ChatBot")
+        self.root.configure(
+            width=180, 
+            height=320, 
+            bg=self.BG_COLOR,
+        )
+        self.root.minsize(
+            width=470, 
+            height=550, 
+        )
 
+        # create title label
+        self.header_label = Label(
+            self.root,
+            bg=self.BG_COLOR,
+            fg=self.FG_COLOR,
+            text="ChatBot",
+            font=self.FONT_BOLD,
+        )
+        self.header_label.place(
+            relwidth=1,
+            relheight=0.1,
+        )
 
-def main() -> None:
-    """
-    This is the core method for the ChatBot. Generates response based 
-    on the users message.
-    :return: None
-    """
+        # create main text body for conversation
+        self.chat_log = Text(
+            self.root,
+            bg=self.BG_COLOR,
+            fg=self.FG_COLOR,
+            height=10,
+            font=self.FONT,
+            padx=5,
+            pady=5,
+            wrap=WORD,
+        )
+        self.chat_log.place(
+            relwidth=0.95,
+            relheight=0.8,
+            rely=0.1,
+        )
+        self.chat_log.configure(
+            cursor="arrow",
+            state=DISABLED,
+            highlightbackground=self.FG_COLOR,
+        )
+        self.scrollbar = Scrollbar(
+            self.root,
+        )
+        self.scrollbar.place(
+            relheight=0.8,
+            relx=0.95,
+            rely=0.1,
+        )
+        self.scrollbar.configure(
+            command=self.chat_log.yview,
+        )
 
-    print("Customer Service: Hello!")
+        # create entry for user input
+        self.message_entry = Entry(
+            self.root,
+            bg=self.BG_COLOR,
+            fg=self.FG_COLOR,
+            font=self.FONT,
+        )
+        self.message_entry.place(
+            relwidth=0.80,
+            relheight=0.065,
+            relx=0.02,
+            rely=0.92,
+        )
+        self.message_entry.focus()
+        self.message_entry.bind("<Return>", self._on_receive)
 
-    while running is True:
-        user_message: str = ps(input("You: "))
-        if user_message in commands:
-            commands[user_message]()
-        
-        else:
-            category: str = fc(user_message, "general")
-            subject: str = fs(user_message, "product")
+        # create send button for user input
+        self.send_button_Frame = Frame(
+            self.root,
+            bg=self.BG_COLOR,
+        )
+        self.send_button_Frame.place(
+            relwidth=0.15,
+            relheight=0.065,
+            relx=0.83,
+            rely=0.92,
+        )
+        self.send_button = Button(
+            self.send_button_Frame,
+            bg=self.BG_COLOR,
+            fg=self.FG_COLOR,
+            text="Send",
+            font=self.FONT_BOLD,
+            command=lambda: self._on_receive(Event()),
+        )
+        self.send_button.pack(
+            expand=True,
+            fill="both",
+        )
+    
+    def _on_receive(self, event: Event) -> None:
+        """
+        inserts user message and bots reply to textbox
+        :param event: str
+        :return: None
+        """
+        if self.message_entry.get():
+            self.chat_log.configure(state=NORMAL)
+
+            # insert user message
+            msg: str = self.message_entry.get()
+            self.message_entry.delete(0, END)
+            self.chat_log.insert(END, "User: " + msg + "\n\n")
+
+            # generate and insert bot message
+            msg = ps(msg)
+            category: str = fc(msg)
+            subject: str = fs(msg)
             response: str = gs(category, subject)
-            print("Customer Service: {response}".format(response=response))
+            self.chat_log.insert(END, "Customer Service: " + response + "\n\n")
 
+            self.chat_log.configure(state=DISABLED)
+            self.chat_log.see(END)
 
-running: bool = True
-commands: dict[str: callable] = {
-    "help": display_commands,
-    "exit": stop_running,
-}
+    def run(self) -> None:
+        """
+        Calls mainloop for main GUI window.
+        :return: None
+        """
+        self.root.mainloop()
+
 
 if __name__ == "__main__":
-    main()
+    app = ChatApplication()
+    app.run()

@@ -3,9 +3,9 @@ This class is responsible for analysis strings for certain key subjects
 """
 
 
-def find_subject(document: str, default_subject: str = "none") -> str:
+def find_subject(document: str, default_subject: str = "product") -> str:
     """
-    This method looks for the most common subject keyword.
+    This method looks for the most common subject keyword
     :param document: str
     :param default_subject: str
     :return: str
@@ -23,29 +23,29 @@ def find_subject(document: str, default_subject: str = "none") -> str:
 
 
 subjects: list[str] = [
-        "jacket",
-        "coat",
-        "sweater",
-        "cardigan",
-        "coat",
-        "parka",
-        "suit",
-        "skirt",
-        "dress",
-        "shirt",
-        "t-shirt",
-        "trousers",
-        "pants",
-        "jeans",
-        "shorts",
-        "bathing suit",
-        "shoe",
-        "shoes",
-        "boots",
-        "sneakers"
-        "slippers",
-        "flip flops",
-        "glasses",
-        "bag",
-        "watch",
+    "jacket",
+    "coat",
+    "sweater",
+    "cardigan",
+    "coat",
+    "parka",
+    "suit",
+    "skirt",
+    "dress",
+    "shirt",
+    "t-shirt",
+    "trousers",
+    "pants",
+    "jeans",
+    "shorts",
+    "bathing suit",
+    "shoe",
+    "shoes",
+    "boots",
+    "sneakers"
+    "slippers",
+    "flip flops",
+    "glasses",
+    "bag",
+    "watch",
 ]

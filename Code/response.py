@@ -7,7 +7,7 @@ This class contains responses for the users messages and finding a response for 
 
 def generate_response(category: str, subject: str) -> str:
     """
-    Generates random response from users response type and subject.
+    Generates random response from users response type and subject
     :param category: str
     :param subject: str
     :return: str
@@ -38,22 +38,30 @@ review_responses: list[str] = [
 ]
 
 greeting_responses: list[str] = [
-        "How can I assist you today?",
-        "Nice to meet you! What can I help you with?",
-        "I am here for any input on are products you have!",
+        "Hi! How can I assist you today?",
+        "Hello! What can I help you with?",
+        "Howdy! I am here for any input on are products you have!",
 ]
 
 general_responses: list[str] = [
         "Ok",
-        "Great",
+        "Great!",
         "Is there anything else you would like to share?",
-        "Can I still assist you? Is there anything else you need to tell me?",
+        "How else can I assist you today?",
 ]
 
 closing_responses: list[str] = [
         "Have a great day!",
         "Thank you for your time.",
         "Thanks for sharing your thought with me.",
+]
+
+unknown_responses: list[str] = [
+        "I'm sorry I don't understand what you are asking me? Could you rephrase your question.",
+        "I can't understand what you said. could you try again.",
+        "Sorry I didn't quite get that. could you try again.",
+        "I couldn't quite understand what you were talking about.",
+        "I'm sorry that is beyond my understanding.",
 ]
 
 response_types: dict[int: list] = {
@@ -63,4 +71,5 @@ response_types: dict[int: list] = {
         "greeting":             greeting_responses,
         "general":              general_responses,
         "closing":              closing_responses,
+        "unknown":               unknown_responses,
 }
