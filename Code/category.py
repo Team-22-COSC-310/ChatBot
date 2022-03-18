@@ -1,13 +1,13 @@
 import math
 from typing import Sequence
-from Code.preprocess import parse_string as ps
+from preprocess import parse_string as ps
 
 """
 This class is responsible for analysis a strings similarity with a category.
 """
 
 
-def tokenize(document: str) -> dict[str:int]:
+def get_bofw(document: str) -> dict[str:int]:
     """
     Creates dict with word count for each distinct word
     :param str document: a string of normalized words
@@ -17,7 +17,7 @@ def tokenize(document: str) -> dict[str:int]:
     return {word: bag_of_words.count(word) for word in set(bag_of_words)}
 
 
-def term_frequency(term: str, token: dict[str:int]) -> float:
+def term_frequency(term: str, bofw: dict[str:int]) -> float:
     """
     Finds term frequency from token
     :param str term: a normalized word
@@ -25,10 +25,10 @@ def term_frequency(term: str, token: dict[str:int]) -> float:
     :type token: dict[str: int]
     :return float: the tf value
     """
-    return token[term] / len(token.keys())
+    return bofw[term] / len(bofw.keys())
 
 
-def inverse_document_frequency(term: str, tokens: Sequence[dict[str:int]]) -> float:
+def inverse_document_frequency(term: str, bofws: Sequence[dict[str:int]]) -> float:
     """
     Finds term inverse frequency from tokens
     :param str term: a normalized word
@@ -36,10 +36,10 @@ def inverse_document_frequency(term: str, tokens: Sequence[dict[str:int]]) -> fl
     :type tokens: Sequence[dict[str: int]]
     :return float: the idf value
     """
-    return math.log(len(tokens) / sum(token[term] for token in tokens if term in token))
+    return math.log(len(bofws) / sum(token[term] for token in bofws if term in token))
 
 
-def tfidf(term: str, token: dict[str:int], tokens: Sequence[dict[str:int]]) -> float:
+def tfidf(term: str, bofw: dict[str:int], bofws: Sequence[dict[str:int]]) -> float:
     """
     Finds term frequency and inverse frequency
     :param str term: a normalized word
@@ -49,10 +49,10 @@ def tfidf(term: str, token: dict[str:int], tokens: Sequence[dict[str:int]]) -> f
     :type tokens: Sequence[dict[str: int]]
     :return float: the tfidf value
     """
-    return term_frequency(term, token) * inverse_document_frequency(term, tokens)
+    return term_frequency(term, bofw) * inverse_document_frequency(term, bofws)
 
 
-def cosine_similarity(token_1: dict[str:int], token_2: dict[str:int]) -> float:
+def cosine_similarity(bofw_1: dict[str:int], bofw_2: dict[str:int]) -> float:
     """
     Computes cosine similarity between two strings
     :param token_1: a tokenized document
@@ -61,20 +61,20 @@ def cosine_similarity(token_1: dict[str:int], token_2: dict[str:int]) -> float:
     :type token_2: dict[str: int]
     :return float: the cosine similarity of both tokens
     """
-    keys: set[str] = set(token_1.keys()) & set(token_2.keys())
+    keys: set[str] = set(bofw_1.keys()) & set(bofw_2.keys())
     product: int = 0
     magnitude_1: float = 0.0
     magnitude_2: float = 0.0
     for key in keys:
-        product += token_1[key] * token_2[key]
-        magnitude_1 += math.pow(token_1[key], 2)
-        magnitude_2 += math.pow(token_2[key], 2)
+        product += bofw_1[key] * bofw_2[key]
+        magnitude_1 += math.pow(bofw_1[key], 2)
+        magnitude_2 += math.pow(bofw_2[key], 2)
 
     cross_product: float = math.sqrt(magnitude_1) * math.sqrt(magnitude_2)
     return 0.0 if not cross_product else product / cross_product
 
 
-def find_category(document: str, default_category: str = "unknown") -> str:
+def find_category(document: str, default_category: str = "general") -> str:
     """
     Finds the most similar recognized category based on given string
     :param str document: a string of normalized words
@@ -85,7 +85,7 @@ def find_category(document: str, default_category: str = "unknown") -> str:
     similarity: float = 0.0
     for _category, keyterms in categorical_types.items():
         # Gets TF-IDF between all keyterms in category with _str
-        tokens: list[dict[str:int]] = [tokenize(s) for s in [document, *keyterms]]
+        tokens: list[dict[str:int]] = [get_bofw(s) for s in [document, *keyterms]]
         for token in tokens:
             for term in token.keys():
                 token[term] = tfidf(term, token, tokens)
@@ -210,7 +210,7 @@ closing_keyterms: list[str] = [
     "thanks for listening",
 ]
 
-categorical_types: dict[str: list[str]] = {
+categorical_types: dict[str : list[str]] = {
     "product satisfaction": [ps(term) for term in product_satisfaction_keyterms],
     "complaint": [ps(term) for term in complaint_keyterms],
     "review": [ps(term) for term in review_keyterms],

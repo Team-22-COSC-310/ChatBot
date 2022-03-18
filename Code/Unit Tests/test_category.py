@@ -15,7 +15,7 @@ class TestCategory(unittest.TestCase):
             "lazy": 1,
             "dog": 1,
         }
-        result: dict[str:int] = category.tokenize(
+        result: dict[str:int] = category.get_bofw(
             "the quick brown fox jumps over the lazy dog"
         )
         self.assertEqual(answer, result)
@@ -28,7 +28,7 @@ class TestCategory(unittest.TestCase):
             "back": 1,
             "to": 1,
         }
-        result: dict[str:int] = category.tokenize("over the hedge back to the hedge")
+        result: dict[str:int] = category.get_bofw("over the hedge back to the hedge")
         self.assertEqual(answer, result)
 
         # test case 3

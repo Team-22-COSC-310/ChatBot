@@ -1,4 +1,4 @@
-from Code.preprocess import parse_string as ps
+from preprocess import parse_string as ps
 
 """
 This class is responsible for analysis strings for certain key subjects.

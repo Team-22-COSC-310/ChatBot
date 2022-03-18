@@ -48,20 +48,17 @@ general_responses: list[str] = [
     "Great!",
     "Is there anything else you would like to share?",
     "How else can I assist you today?",
+    "I'm sorry I don't understand what you are asking me? Could you rephrase your question.",
+    "I can't understand what you said. could you try again.",
+    "Sorry I didn't quite get that. could you try again.",
+    "I couldn't quite understand what you were talking about.",
+    "I'm sorry that is beyond my understanding.",
 ]
 
 closing_responses: list[str] = [
     "Have a great day!",
     "Thank you for your time.",
     "Thanks for sharing your thought with me.",
-]
-
-unknown_responses: list[str] = [
-    "I'm sorry I don't understand what you are asking me? Could you rephrase your question.",
-    "I can't understand what you said. could you try again.",
-    "Sorry I didn't quite get that. could you try again.",
-    "I couldn't quite understand what you were talking about.",
-    "I'm sorry that is beyond my understanding.",
 ]
 
 response_types: dict[int:list] = {
@@ -71,5 +68,4 @@ response_types: dict[int:list] = {
     "greeting": greeting_responses,
     "general": general_responses,
     "closing": closing_responses,
-    "unknown": unknown_responses,
 }
