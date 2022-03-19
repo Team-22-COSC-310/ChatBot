@@ -6,6 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="e14e57f3-54e6-43ca-810b-54c981825adf" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Code/subject.py" beforeDir="false" afterPath="$PROJECT_DIR$/Code/subject.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -58,7 +60,7 @@
       <recent name="C:\Users\nolan\OneDrive\Documents\GitHub\ChatBot\Unit Tests" />
     </key>
   </component>
-  <component name="RunManager" selected="Python tests.Python tests in test_subject.py">
+  <component name="RunManager" selected="Python.Main">
     <configuration name="subject" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
       <module name="ChatBot" />
       <option name="INTERPRETER_OPTIONS" value="" />
