@@ -54,6 +54,15 @@ Firstly download the repository. Then run the "Main.py" file.
   
     All of these will be reduced to "like".
 
+###Use of language toolkit: Named entity recognition (2 points)
+- This is done with spaCy module in the response.py file to find products the user is talking about.
+
+**example:**
+
+    User: My shoes that I bought broke.
+    
+    CostumerService: Awesome! I am so glad you enjoyed your shoes. What was the best part about the shoes?
+
 ###The bot is able to have a conversation with another bot. (3 points)
 - Using sockets or locally the bot is able to talk with another bot. This can give great insight into gaps in the bots' knowledge without human interaction.
 
