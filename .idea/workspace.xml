@@ -4,9 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e14e57f3-54e6-43ca-810b-54c981825adf" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-    </list>
+    <list default="true" id="e14e57f3-54e6-43ca-810b-54c981825adf" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -153,10 +151,10 @@
     <list>
       <item itemvalue="Python.Main" />
       <item itemvalue="Python.subject" />
-      <item itemvalue="Python tests.Python tests in test_category.py" />
-      <item itemvalue="Python tests.Python tests in test_preprocess.py" />
       <item itemvalue="Python tests.Python tests for test_response.TestResponse" />
       <item itemvalue="Python tests.Python tests for test_subject.TestSubject.test_find_subject" />
+      <item itemvalue="Python tests.Python tests in test_category.py" />
+      <item itemvalue="Python tests.Python tests in test_preprocess.py" />
       <item itemvalue="Python tests.Python tests in test_subject.py" />
     </list>
     <recent_temporary>
