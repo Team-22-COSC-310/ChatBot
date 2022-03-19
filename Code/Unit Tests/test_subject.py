@@ -1,6 +1,12 @@
 import unittest
-import Code.subject as subject
-import Code.preprocess as preprocess
+import os
+import sys
+
+path = os.getcwd().removesuffix("\\Unit Tests")
+if path not in sys.path:
+    sys.path.append(path)
+    import subject
+    import preprocess
 
 
 class TestSubject(unittest.TestCase):

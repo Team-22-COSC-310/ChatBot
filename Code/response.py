@@ -1,4 +1,5 @@
 import random
+from subject import subjects
 
 """
 This class contains responses for the users messages and finding a response for the user.
@@ -12,7 +13,7 @@ def generate_response(category: str, subject: str) -> str:
     :param str subject: a subject from the bots know categories
     :return str: a response from the category and subject
     """
-    return random.choice(response_types[category]).format(subject=subject)
+    return random.choice(response_types[category]).format(subject=subject, product=random.choice(subjects))
 
 
 product_satisfaction_responses: list[str] = [
@@ -35,6 +36,12 @@ review_responses: list[str] = [
     "with?",
     "Thank you for your input about are {subject}'s. Your review will be noted. Is there anything else you "
     "wanted to share?",
+]
+
+suggestion_responses: list[str] = [
+    "I would recommend a {product}. What do you think of that?",
+    "You should check out are {product}. Does this product interest you?",
+    "From your interests I would suggest {product}."
 ]
 
 greeting_responses: list[str] = [
@@ -65,6 +72,7 @@ response_types: dict[int:list] = {
     "product satisfaction": product_satisfaction_responses,
     "complaint": complaint_responses,
     "review": review_responses,
+    "suggestion": suggestion_responses,
     "greeting": greeting_responses,
     "general": general_responses,
     "closing": closing_responses,
