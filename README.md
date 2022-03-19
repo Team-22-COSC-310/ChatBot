@@ -22,10 +22,25 @@ Firstly download the repository. Then run the "Main.py" file.
     
 **example:**
 
+    User: Could you suggest a product for me?
+    
+    CostomerService: You should check out are shoes. Does this product interest you?
+
 ###5 responsible responses outside the two main topics. (0.5 points)
 - The bot is able to understand its limitations and steer the conversation back to its understood topics.
     
 **example:**
+
+    Responses:
+    "Ok"
+    "Great!"
+    "Is there anything else you would like to share?"
+    "How else can I assist you today?"
+    "I'm sorry I don't understand what you are asking me? Could you rephrase your question."
+    "I can't understand what you said. could you try again."
+    "Sorry I didn't quite get that. could you try again."
+    "I couldn't quite understand what you were talking about."
+    "I'm sorry that is beyond my understanding."
 
 ###Bot can handle spelling mistakes with Porter Stemmer. (1 point)
 - This is done with Porter Stemmer and is better at normalizing responses i.e. given a wide response variation for a single response it's able to normalize the response to a single normalized one that can be interoperate the same no matter the variation of the response. This enables the bot to give a similar response every time.
@@ -38,6 +53,15 @@ Firstly download the repository. Then run the "Main.py" file.
     liking
   
     All of these will be reduced to "like".
+
+###Use of language toolkit: Named entity recognition (2 points)
+- This is done with spaCy module in the response.py file to find products the user is talking about.
+
+**example:**
+
+    User: My shoes that I bought broke.
+    
+    CostumerService: Awesome! I am so glad you enjoyed your shoes. What was the best part about the shoes?
 
 ###The bot is able to have a conversation with another bot. (3 points)
 - Using sockets or locally the bot is able to talk with another bot. This can give great insight into gaps in the bots' knowledge without human interaction.
