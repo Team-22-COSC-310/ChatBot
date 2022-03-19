@@ -9,7 +9,11 @@ if path not in sys.path:
 
 
 class TestPreprocess(unittest.TestCase):
-    def test_replace(self):
+    def test_replace(self) -> None:
+        """
+        Tests the replace() method
+        :return None:
+        """
         # test case 1
         answer = "Hello how are you guys today"
         result = preprocess.replace(
@@ -32,7 +36,11 @@ class TestPreprocess(unittest.TestCase):
         )
         self.assertEqual(result, answer)
 
-    def test_parse_string(self):
+    def test_parse_string(self) -> None:
+        """
+        Tests the parse_string method
+        :return None:
+        """
         answer = "hello how are you guy today"
         result = preprocess.parse_string("Hello how are you guys today!")
         self.assertEqual(result, answer)
