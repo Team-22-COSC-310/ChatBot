@@ -1,5 +1,11 @@
 import unittest
-import Code.category as category
+import os
+import sys
+
+path = os.getcwd().removesuffix("\\Unit Tests")
+if path not in sys.path:
+    sys.path.append(path)
+    import category
 
 
 class TestCategory(unittest.TestCase):

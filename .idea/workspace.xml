@@ -5,7 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e14e57f3-54e6-43ca-810b-54c981825adf" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/Code/response.py" beforeDir="false" afterPath="$PROJECT_DIR$/Code/response.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -58,7 +58,7 @@
       <recent name="C:\Users\nolan\OneDrive\Documents\GitHub\ChatBot\Unit Tests" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.Main">
+  <component name="RunManager" selected="Python tests.Python tests in test_subject.py">
     <configuration name="subject" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
       <module name="ChatBot" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -80,7 +80,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="Python tests for test_category.TestCategory" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
+    <configuration name="Python tests for test_response.TestResponse" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
       <module name="ChatBot" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -90,7 +90,7 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="_new_additionalArguments" value="&quot;&quot;" />
-      <option name="_new_target" value="&quot;test_category.TestCategory&quot;" />
+      <option name="_new_target" value="&quot;test_response.TestResponse&quot;" />
       <option name="_new_targetType" value="&quot;PYTHON&quot;" />
       <method v="2" />
     </configuration>
@@ -106,6 +106,34 @@
       <option name="_new_additionalArguments" value="&quot;&quot;" />
       <option name="_new_target" value="&quot;test_subject.TestSubject.test_find_subject&quot;" />
       <option name="_new_targetType" value="&quot;PYTHON&quot;" />
+      <method v="2" />
+    </configuration>
+    <configuration name="Python tests in test_category.py" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
+      <module name="ChatBot" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Code/Unit Tests" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="_new_additionalArguments" value="&quot;&quot;" />
+      <option name="_new_target" value="&quot;$PROJECT_DIR$/Code/Unit Tests/test_category.py&quot;" />
+      <option name="_new_targetType" value="&quot;PATH&quot;" />
+      <method v="2" />
+    </configuration>
+    <configuration name="Python tests in test_preprocess.py" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
+      <module name="ChatBot" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Code/Unit Tests" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="_new_additionalArguments" value="&quot;&quot;" />
+      <option name="_new_target" value="&quot;$PROJECT_DIR$/Code/Unit Tests/test_preprocess.py&quot;" />
+      <option name="_new_targetType" value="&quot;PATH&quot;" />
       <method v="2" />
     </configuration>
     <configuration name="Python tests in test_subject.py" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
@@ -125,15 +153,19 @@
     <list>
       <item itemvalue="Python.Main" />
       <item itemvalue="Python.subject" />
-      <item itemvalue="Python tests.Python tests for test_category.TestCategory" />
+      <item itemvalue="Python tests.Python tests in test_category.py" />
+      <item itemvalue="Python tests.Python tests in test_preprocess.py" />
+      <item itemvalue="Python tests.Python tests for test_response.TestResponse" />
       <item itemvalue="Python tests.Python tests for test_subject.TestSubject.test_find_subject" />
       <item itemvalue="Python tests.Python tests in test_subject.py" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Python tests.Python tests for test_subject.TestSubject.test_find_subject" />
         <item itemvalue="Python tests.Python tests in test_subject.py" />
-        <item itemvalue="Python tests.Python tests for test_category.TestCategory" />
+        <item itemvalue="Python tests.Python tests for test_subject.TestSubject.test_find_subject" />
+        <item itemvalue="Python tests.Python tests for test_response.TestResponse" />
+        <item itemvalue="Python tests.Python tests in test_preprocess.py" />
+        <item itemvalue="Python tests.Python tests in test_category.py" />
       </list>
     </recent_temporary>
   </component>
