@@ -9,7 +9,11 @@ if path not in sys.path:
 
 
 class TestCategory(unittest.TestCase):
-    def test_tokenize(self):
+    def test_get_bofw(self) -> None:
+        """
+        Tests the get_bofw() method
+        :return: None
+        """
         # test case 1
         answer: dict[str:int] = {
             "the": 2,
@@ -38,21 +42,14 @@ class TestCategory(unittest.TestCase):
         self.assertEqual(answer, result)
 
         # test case 3
-
-    def test_term_frequency(self):
-        pass
-
-    def test_inverse_document_frequency(self):
-        pass
-
-    def test_tfidf(self):
-        pass
-
-    def test_cosine_similarity(self):
-        pass
-
-    def test_find_category(self):
-        pass
+        answer: dict[str:int] = {
+            "black": 2,
+            "to": 2,
+            "the": 1,
+            "back": 2,
+        }
+        result: dict[str:int] = category.get_bofw("black to the back back to black")
+        self.assertEqual(answer, result)
 
 
 if __name__ == "__main__":

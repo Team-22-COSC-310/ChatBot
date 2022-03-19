@@ -9,7 +9,11 @@ if path not in sys.path:
 
 
 class TestResponse(unittest.TestCase):
-    def test_generate_response(self):
+    def test_generate_response(self) -> None:
+        """
+        Tests the generate_response() method
+        :return None:
+        """
         # test case 1
         category = "product satisfaction"
         subject = "product"

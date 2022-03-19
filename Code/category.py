@@ -214,7 +214,7 @@ closing_keyterms: list[str] = [
     "thanks for listening",
 ]
 
-categorical_types: dict[str : list[str]] = {
+categorical_types: dict[str: list[str]] = {
     "product satisfaction": [ps(term) for term in product_satisfaction_keyterms],
     "complaint": [ps(term) for term in complaint_keyterms],
     "review": [ps(term) for term in review_keyterms],

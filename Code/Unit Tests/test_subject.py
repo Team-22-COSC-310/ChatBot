@@ -10,7 +10,11 @@ if path not in sys.path:
 
 
 class TestSubject(unittest.TestCase):
-    def test_find_subject(self):
+    def test_find_subject(self) -> None:
+        """
+        Tests the find_subject() method
+        :return None:
+        """
         # test case 1
         answer = "shoe"
         result = subject.find_subject(
