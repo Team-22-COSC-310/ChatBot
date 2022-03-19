@@ -15,7 +15,7 @@ Firstly download the repository. Then run the "Main.py" file.
 
 **example:**
 
-![Alt text](./Assets/Images/GUI Example.png?raw=true)
+![alt text](https://github.com/Team-22-COSC-310/ChatBot/blob/main/Assets/Images/GUI%20Example.png?raw=true)
 
 ###Extra Topics the bot can suggest other theatricals of clothing. (0.5 points)
 - This helps the user better extrapolate their feelings towards the product and give the system usefully feedback.
