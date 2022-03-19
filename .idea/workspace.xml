@@ -160,11 +160,11 @@
     <list>
       <item itemvalue="Python.Main" />
       <item itemvalue="Python.subject" />
+      <item itemvalue="Python tests.Python tests for test_category.TestCategory" />
       <item itemvalue="Python tests.Python tests for test_response.TestResponse" />
       <item itemvalue="Python tests.Python tests for test_subject.TestSubject.test_find_subject" />
       <item itemvalue="Python tests.Python tests in test_preprocess.py" />
       <item itemvalue="Python tests.Python tests in test_subject.py" />
-      <item itemvalue="Python tests.Python tests for test_category.TestCategory" />
     </list>
     <recent_temporary>
       <list>
