@@ -5,12 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e14e57f3-54e6-43ca-810b-54c981825adf" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/Assets/Images/GUI Example.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Code/Main.py" beforeDir="false" afterPath="$PROJECT_DIR$/Code/Main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Code/Unit Tests/test_category.py" beforeDir="false" afterPath="$PROJECT_DIR$/Code/Unit Tests/test_category.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Code/category.py" beforeDir="false" afterPath="$PROJECT_DIR$/Code/category.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Code/response.py" beforeDir="false" afterPath="$PROJECT_DIR$/Code/response.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Code/subject.py" beforeDir="false" afterPath="$PROJECT_DIR$/Code/subject.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -58,9 +54,10 @@
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\nolan\OneDrive\Documents\GitHub\ChatBot\Assets" />
+      <recent name="C:\Users\nolan\OneDrive\Documents\GitHub\ChatBot\Images" />
+      <recent name="C:\Users\nolan\OneDrive\Documents\GitHub\ChatBot" />
       <recent name="C:\Users\nolan\OneDrive\Documents\GitHub\ChatBot\Code" />
       <recent name="C:\Users\nolan\OneDrive\Documents\GitHub\ChatBot\Unit Tests" />
-      <recent name="C:\Users\nolan\OneDrive\Documents\GitHub\ChatBot" />
     </key>
   </component>
   <component name="RunManager" selected="Python.Main">
