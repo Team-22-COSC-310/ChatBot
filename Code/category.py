@@ -21,44 +21,44 @@ def term_frequency(term: str, bofw: dict[str:int]) -> float:
     """
     Finds term frequency from token
     :param str term: a normalized word
-    :param token: a tokenized document
-    :type token: dict[str: int]
+    :param bofw: a tokenized document
+    :type bofw: dict[str: int]
     :return float: the tf value
     """
     return bofw[term] / len(bofw.keys())
 
 
-def inverse_document_frequency(term: str, bofws: Sequence[dict[str:int]]) -> float:
+def inverse_document_frequency(term: str, bsofw: Sequence[dict[str:int]]) -> float:
     """
     Finds term inverse frequency from tokens
     :param str term: a normalized word
-    :param tokens: tokenized documents
-    :type tokens: Sequence[dict[str: int]]
+    :param bsofw: tokenized documents
+    :type bsofw: Sequence[dict[str: int]]
     :return float: the idf value
     """
-    return math.log(len(bofws) / sum(token[term] for token in bofws if term in token))
+    return math.log(len(bsofw) / sum(token[term] for token in bsofw if term in token))
 
 
-def tfidf(term: str, bofw: dict[str:int], bofws: Sequence[dict[str:int]]) -> float:
+def tfidf(term: str, bofw: dict[str:int], bsofw: Sequence[dict[str:int]]) -> float:
     """
     Finds term frequency and inverse frequency
     :param str term: a normalized word
-    :param token: a tokenized document
-    :type token: dict[str: int]
-    :param tokens: tokenized documents
-    :type tokens: Sequence[dict[str: int]]
+    :param bofw: a tokenized document
+    :type bofw: dict[str: int]
+    :param bsofw: tokenized documents
+    :type bsofw: Sequence[dict[str: int]]
     :return float: the tfidf value
     """
-    return term_frequency(term, bofw) * inverse_document_frequency(term, bofws)
+    return term_frequency(term, bofw) * inverse_document_frequency(term, bsofw)
 
 
 def cosine_similarity(bofw_1: dict[str:int], bofw_2: dict[str:int]) -> float:
     """
     Computes cosine similarity between two strings
-    :param token_1: a tokenized document
-    :type token_1: dict[str: int]
-    :param token_2: a tokenized document
-    :type token_2: dict[str: int]
+    :param bofw_1: a tokenized document
+    :type bofw_1: dict[str: int]
+    :param bofw_2: a tokenized document
+    :type bofw_2: dict[str: int]
     :return float: the cosine similarity of both tokens
     """
     keys: set[str] = set(bofw_1.keys()) & set(bofw_2.keys())
@@ -169,20 +169,24 @@ complaint_keyterms: list[str] = [
 ]
 
 review_keyterms: list[str] = [
+    "rate",
     "stars",
     "review",
-    "rating",
     "opinion",
-    "reviewed",
     "feedback",
-    "recommend",
-    "suggestion",
-    "suggestions",
     "you should use better",
     "in my opinion the ...",
     "i would give the ... a",
     "my rating of the ... would be",
     "i would give the ... a ... out of ...",
+]
+
+suggestion_keyterms: list[str] = [
+    "suggest",
+    "recommend",
+    "suggestion",
+    "suggestions",
+    "could you suggest anything for me",
 ]
 
 greeting_keyterms: list[str] = [
@@ -214,6 +218,7 @@ categorical_types: dict[str : list[str]] = {
     "product satisfaction": [ps(term) for term in product_satisfaction_keyterms],
     "complaint": [ps(term) for term in complaint_keyterms],
     "review": [ps(term) for term in review_keyterms],
+    "suggestion": [ps(term) for term in suggestion_keyterms],
     "greeting": [ps(term) for term in greeting_keyterms],
     "general": [ps(term) for term in general_keyterms],
     "closing": [ps(term) for term in closing_keyterms],
